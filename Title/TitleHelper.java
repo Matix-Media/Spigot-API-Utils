@@ -25,7 +25,6 @@
 
 package net.matixmedia.utils;
 
-import net.matixmedia.blockclutch.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -49,7 +48,7 @@ public class TitleHelper {
      * @param fadeOutTime The time the title takes to fade out
      * @param color The color of the title
      */
-    public void sendTitle(Player player, String text, int fadeInTime, int showTime, int fadeOutTime, ChatColor color)
+    public static void sendTitle(Player player, String text, int fadeInTime, int showTime, int fadeOutTime, ChatColor color)
     {
         try
         {
@@ -77,7 +76,7 @@ public class TitleHelper {
      * @param stay the time on the screen
      * @param fadeout the fade out delay.
      */
-    public void sendTitle(Player player, String title, String subtitle, int fadein, int stay, int fadeout) {
+    public static void sendTitle(Player player, String title, String subtitle, int fadein, int stay, int fadeout) {
         title = ChatColor.translateAlternateColorCodes('&', title);
         subtitle = ChatColor.translateAlternateColorCodes('&', subtitle);
 
@@ -112,7 +111,7 @@ public class TitleHelper {
      * @param player the player to send the message to.
      * @param message the message to send.
      */
-    public void sendActionBar(Player player, String message) {
+    public static void sendActionBar(Player player, String message) {
         message = ChatColor.translateAlternateColorCodes('&', message);
 
         Class<?> chatSerializer = getNMSClass("IChatBaseComponent").getDeclaredClasses()[0];
@@ -142,7 +141,7 @@ public class TitleHelper {
      * @param duration the duration the message should be visible for in seconds.
      * @param plugin the plugin sending the message.
      */
-    public void sendActionBar(final Player player, final String message,
+    public static void sendActionBar(final Player player, final String message,
                                             final int duration, Plugin plugin) {
         cancelPendingMessages(player);
         final BukkitTask messageTask = new BukkitRunnable() {
@@ -167,7 +166,7 @@ public class TitleHelper {
         }
     }
 
-    private void sendPacket(Player player, Object packet)
+    private static void sendPacket(Player player, Object packet)
     {
         try
         {
@@ -186,7 +185,7 @@ public class TitleHelper {
      * @param name Name of the class
      * @return Class
      */
-    private Class<?> getNMSClass(String name)
+    private static Class<?> getNMSClass(String name)
     {
         try
         {
@@ -194,7 +193,7 @@ public class TitleHelper {
         }
         catch(ClassNotFoundException ex)
         {
-            Main.logger.info("Could not get NMS class!");
+            System.out.println("Could not get NMS class!");
             //Do something
         }
         return null;
