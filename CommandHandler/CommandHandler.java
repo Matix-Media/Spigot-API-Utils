@@ -35,9 +35,15 @@ public class CommandHandler implements CommandExecutor {
             for (Map.Entry<String, ICommand> entry : commands.entrySet()) {
                 if (!sender.hasPermission(permissions.get(entry.getKey())))
                     continue;
-                sender.sendMessage(prefix + " " + ChatColor.YELLOW + "/" + label + " " + ChatColor.BOLD + entry.getKey() +
-                        ChatColor.YELLOW + " " + entry.getValue().arguments() + ChatColor.DARK_GRAY + " - " +
-                        ChatColor.GRAY + entry.getValue().help());
+                if (entry.getValue().arguments() == null) {
+                    sender.sendMessage(prefix + " " + ChatColor.YELLOW + "/" + label + " " + ChatColor.BOLD + entry.getKey() +
+                            ChatColor.DARK_GRAY + " - " +
+                            ChatColor.GRAY + entry.getValue().help());
+                } else {
+                    sender.sendMessage(prefix + " " + ChatColor.YELLOW + "/" + label + " " + ChatColor.BOLD + entry.getKey() +
+                            ChatColor.YELLOW + " " + entry.getValue().arguments() + ChatColor.DARK_GRAY + " - " +
+                            ChatColor.GRAY + entry.getValue().help());
+                }
             }
             sender.sendMessage(" ");
             return true;
