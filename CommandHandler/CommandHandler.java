@@ -42,7 +42,7 @@ public class CommandHandler implements CommandExecutor {
             sender.sendMessage(" ");
             return true;
         } else if (args.length == 0) {
-            baseCommand.execute(sender, new String[0]);
+            baseCommand.execute(sender, new String[0], prefix);
             return true;
         } else {
             if (!commands.containsKey(args[0])) {
@@ -50,7 +50,7 @@ public class CommandHandler implements CommandExecutor {
                 return true;
             }
             String[] subCommandArgs = Arrays.copyOfRange(args, label.split(" ").length, args.length);
-            commands.get(args[0]).execute(sender, subCommandArgs);
+            commands.get(args[0]).execute(sender, subCommandArgs, prefix);
             return true;
         }
     }
