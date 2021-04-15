@@ -6,6 +6,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 
 public class CommandHandler implements CommandExecutor {
@@ -14,8 +15,8 @@ public class CommandHandler implements CommandExecutor {
     private String label;
     private String prefix;
     private ICommand baseCommand;
-    private Map<String, ICommand> commands;
-    private Map<String, String> permissions;
+    private final Map<String, ICommand> commands = new HashMap<>();
+    private final Map<String, String> permissions = new HashMap<>();
 
     public CommandHandler(String name, String label, String prefix) {
         this.name = name;
