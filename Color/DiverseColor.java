@@ -1,6 +1,5 @@
 package net.matixmedia.utils;
 
-import lombok.Getter;
 import org.bukkit.DyeColor;
 
 public enum DiverseColor {
@@ -23,13 +22,18 @@ public enum DiverseColor {
     YELLOW((short) 4, DyeColor.YELLOW);
 
 
-    @Getter
     private short blockData;
-    @Getter
     private DyeColor dyeColor;
 
     private DiverseColor(short blockData, DyeColor dyeColor) {
         this.blockData = blockData;
         this.dyeColor = dyeColor;
     }
+    
+    public short getBlockData() {
+        return this.blockData;
+    }
+    
+    public DyeColor getDyeColor() {
+        return this.dyeColor;
 }
